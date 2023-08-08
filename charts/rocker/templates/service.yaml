@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: r-server
+  namespace: r
+  labels:
+    app: r-server
+spec:
+  ports:
+   - name: http
+     protocol: TCP
+     port: 8787
+  selector:
+    app: r-server

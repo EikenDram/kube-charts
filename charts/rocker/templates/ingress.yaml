@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    spec/ingressClassName: nginx
+  name: r-server
+  namespace: r
+  labels:
+    app: r-server
+spec:
+  rules:
+    - host: r.k3s.local
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: r-server
+                port:
+                  number: 8787

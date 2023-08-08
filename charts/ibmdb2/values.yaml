@@ -1,0 +1,46 @@
+# Set the prefix used for all resources in the Helm chart. If not set,
+# the prefix will be `<helm release name>`.
+name: null
+
+# Override name
+nameOverride: null
+
+# Full name override
+fullnameOverride: null
+
+# DB2 configuration
+db2:
+  # Instance name
+  instance: db2inst1
+  # Instance password
+  password: db2admin
+  # Exposed NodePort in service
+  port: 32000
+  # Storage
+  storage: 10Gi
+  # DB2 data management console repository database configuration
+  repodb:
+    # Create repository database on deployment
+    enable: true
+    # name of repository database
+    dbname: repodb
+
+# Details of the container image
+image:
+  repository: icr.io/db2_community/db2
+  tag: latest
+  pullPolicy: IfNotPresent
+  # One or more secrets to be used when pulling images
+  imagePullSecrets: []
+  # - registrySecretName
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 300Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 300Mi
+
+# Node selector to use for the IBM DB2 deployment. Optional.
+nodeSelector: {}

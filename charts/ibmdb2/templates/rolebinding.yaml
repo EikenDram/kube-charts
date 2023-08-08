@@ -1,0 +1,14 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "ibmdb2.fullname" . }}-server
+  labels:
+    app.kubernetes.io/component	: server
+    {{- include "ibmdb2.labels" . | nindent 4 }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "ibmdb2.serviceAccount" . }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "ibmdb2.fullname" . }}-server

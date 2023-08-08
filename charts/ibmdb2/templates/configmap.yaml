@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "ibmdb2.fullname" $ }}-config
+  labels:
+    app.kubernetes.io/component	: server
+    {{- include "ibmdb2.labels" . | nindent 4 }}
+data:
+  repodb.sh: |
+    su - db2inst1 -c "db2 create database {{ .Values.db2.repodb.dbname }} pagesize 8 k"
+    su - db2inst1 -c "db2 UPDATE DATABASE CONFIGURATION FOR {{ .Values.db2.repodb.dbname }} USING LOGPRIMARY 25 LOGSECOND 200 LOGFILSIZ 8192"
+    su - db2inst1 -c "db2 UPDATE DATABASE CONFIGURATION FOR {{ .Values.db2.repodb.dbname }} USING EXTENDED_ROW_SZ enable"

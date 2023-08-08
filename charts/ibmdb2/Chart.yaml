@@ -1,0 +1,11 @@
+apiVersion: v2
+appVersion: 11.5.8.0
+description: A Helm chart for IBM DB2
+name: ibmdb2
+version: 0.1.1
+home: https://github.com/EikenDram/ibmdb2-chart
+sources:
+- https://github.com/EikenDram/ibmdb2-chart
+maintainers:
+  - name: aiken
+    email: eikendram@gmail.com

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: r-server
+  namespace: r
+  labels:
+    app: r-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: r-server
+  template:
+    metadata:
+      labels:
+        app: r-server
+    spec:
+      containers:
+        - name: r-server
+          image: rocker/tidyverse:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8787
+          env:
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: r-server-pass
+                key: pass
+          volumeMounts:
+          - name: cfg-volume
+            mountPath: /home/rstudio/.config/rstudio
+          - name: workspace-volume
+            mountPath: /home/rstudio/workspace
+      volumes:
+        - name: cfg-volume
+          emptyDir: pvc-r-server-config
+        - name: workspace-volume
+          emptyDir: pvc-r-server-workspace
