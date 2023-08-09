@@ -11,10 +11,7 @@ fullnameOverride: null
 # KubeHome configuration
 config:
   # localization
-  locale: |
-    {
-      "app": "Kubernetes cluster"
-    }
+  locale: ""
   #locale: |
   #  {
   #    "app": "Kubernetes cluster",
