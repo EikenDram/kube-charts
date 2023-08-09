@@ -1,22 +1,14 @@
 # Custom helm charts for KubeBuild project
 
-- IBM DB2 community edition
-- R Studio server
-- KubeHome home page for cluster
-- KubeR service for cluster
+- `ibmdb2` -  IBM DB2 community edition
+- `rocker` - R Studio server
+- `kube-home` - KubeHome home page for cluster
+- `kube-r` - KubeR service for cluster
 
-## Build chart
+## Build charts
 
-```
-helm package ./charts/<chart>/ -d ./packages/
-```
-
-## Check chart
-
-```
-helm lint charts/<chart>/
-
-helm template test ./packages/<chart>-<version>.tgz --output-dir test
+```sh
+sh build.sh
 ```
 
 ## Upload chart to gitea

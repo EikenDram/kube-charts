@@ -7,6 +7,6 @@ metadata:
     {{- include "kubehome.labels" . | nindent 4 }}
 data:
   apps.json: |
-{{ .Values.config.apps | indent 4 -}}
+{{ .Values.config.apps | indent 4 }}
   cluster.json: |
-{{ .Values.config.cluster | indent 4 -}}
+{{ .Values.config.cluster | indent 4 }}

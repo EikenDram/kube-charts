@@ -7,4 +7,4 @@ metadata:
     {{- include "kubehome.labels" . | nindent 4 }}
 data:
   locale.json: |
-{{ .Values.config.locale | indent 4 -}}
+{{ .Values.config.locale | indent 4 }}
