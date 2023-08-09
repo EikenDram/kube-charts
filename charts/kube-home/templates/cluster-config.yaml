@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "kubehome.fullname" $ }}-cluster-config
+  labels:
+    app.kubernetes.io/component	: homepage
+    {{- include "kubehome.labels" . | nindent 4 }}
+data:
+  apps.json: |
+{{ .Values.config.apps | indent 4 -}}
+  cluster.json: |
+{{ .Values.config.cluster | indent 4 -}}

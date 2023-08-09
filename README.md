@@ -1,8 +1,8 @@
 # Custom helm charts for KubeBuild project
 
-- IBM DB2 community edition helm chart
-
-Helm chart for deploying IBM DB2 community edition in kubernetes cluster
+- IBM DB2 community edition
+- R Studio server
+- KubeHome home page for cluster
 
 ## Build chart
 
