@@ -1,0 +1,164 @@
+# Set the prefix used for all resources in the Helm chart. If not set,
+# the prefix will be `<helm release name>`.
+name: null
+
+# Override name
+nameOverride: null
+
+# Full name override
+fullnameOverride: null
+
+# KubeHome configuration
+config:
+  # localization
+  locale: |
+    {
+      "app": "Kubernetes cluster",
+      "utils": "Tools"
+      "open": "Open",
+      "docs": "Documentation",
+      "services": "Services",
+      "contacts": "Contacts",
+      "system": "System",
+      "specs": "Specifications"
+    }
+  # applications
+  apps: |
+    [
+      {
+        "name": "Application template",
+        "desc": "Description",
+        "url": "app.k3s.local",
+        "docs": "app.k3s.local/docs"
+      }
+    ]
+
+  cluster: |
+    {
+      "name": "K3S.LOCAL",
+      "contacts": [
+        {
+          "title": "Administrator",
+          "name": "Aiken Drum",
+          "phone": "77-77",
+          "mail": "eikendram@gmail.com"
+        }
+      ],
+      "specs": [
+        { "name": "IP", "value": "192.168.120.15" },
+        { "name": "CPU", "value": "4 Cores" },
+        { "name": "Memory", "value": "8 Gb" },
+        { "name": "Fedora CoreOS", "value": "37.20230205.3.0" },
+        { "name": "K3S", "value": "v1.27.2+k3s1" }
+      ],
+      "utils": [
+        { 
+          "name": "bulk-pass",
+          "desc": "Change user's passwords from file", 
+          "url": "http://git.k3s.local/IT/bulk-pass/" 
+        }
+      ],
+      "services": [
+        {
+          "name": "Keycloak",
+          "desc": "Access management",
+          "url": "http://keycloak.k3s.local"
+        },
+        {
+          "name": "KubeR",
+          "desc": "Report processing service",
+          "url": "http://report.k3s.local/"
+        },
+        {
+          "name": "Rabbit MQ",
+          "desc": "Report processing service",
+          "url": "http://rabbitmq.k3s.local/"
+        },
+        {
+          "name": "Gitea",
+          "desc": "Git server",
+          "url": "http://git.k3s.local/"
+        },
+        {
+          "name": "IBM DB2",
+          "desc": "Database port: 32000",
+          "url": "https://k3s.local:11081/console/"
+        }
+      ],
+      "system": [
+        {
+          "name": "Portainer",
+          "desc": "Kubernetes management",
+          "url": "http://portainer.k3s.local/"
+        },
+        {
+          "name": "Grafana",
+          "desc": "Monitoring UI",
+          "url": "http://grafana.k3s.local/"
+        },
+        {
+          "name": "Argo CD",
+          "desc": "Continuous delivery software",
+          "url": "http://argocd.k3s.local/"
+        },
+        {
+          "name": "Tekton",
+          "desc": "CI/CD Pipelines",
+          "url": "http://tekton.k3s.local/"
+        },
+        {
+          "name": "MinIO",
+          "desc": "Backup storage",
+          "url": "http://k3s.local:9001/"
+        },
+        {
+          "name": "Prometheus",
+          "desc": "Monitoring aggregator",
+          "url": "http://prometheus.k3s.local/"
+        },
+        {
+          "name": "Registry",
+          "desc": "Private docker registry",
+          "url": "http://registry.k3s.local/"
+        }
+      ]
+    }
+
+# Details of the container image
+image:
+  repository: apps/kube-home
+  tag: v0.2.4
+  pullPolicy: IfNotPresent
+  # One or more secrets to be used when pulling images
+  imagePullSecrets: []
+  # - registrySecretName
+
+# Ingress configuration
+ingress:
+  # Fully qualified domain name of a network host.
+  host: null
+  # Path is matched against the path of an incoming request.
+  path: /
+  # Determines the interpretation of the Path matching
+  pathType: ImplementationSpecific
+  # The name of an IngressClass cluster resource.
+  ingressClassName: traefik
+  # TLS configuration
+  tls: []
+  # Annotations to apply to the ingress.
+  annotations: {}
+  # If you want a custom path, you can try this example:
+  # path: /api(/|$)(.*)
+  # annotations:
+  #  { nginx.ingress.kubernetes.io/rewrite-target: /$2 }
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 300Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 300Mi
+
+# Node selector to use for the KubeHome deployment. Optional.
+nodeSelector: {}
