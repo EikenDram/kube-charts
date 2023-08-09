@@ -133,6 +133,7 @@ image:
   imagePullSecrets: []
   # - registrySecretName
 
+# Ingress configuration
 ingress:
   # Fully qualified domain name of a network host.
   host: null

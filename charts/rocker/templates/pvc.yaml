@@ -1,23 +1,27 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-r-server-config
-  namespace: r
+  name: {{ include "rocker.fullname" . }}-pvc-config
+  labels:
+    app.kubernetes.io/component	: server
+    {{- include "rocker.labels" . | nindent 4 }}
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: {{.Values.rocker.storage.config}}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-r-server-workspace
-  namespace: r
+  name: {{ include "rocker.fullname" . }}-pvc-workspace
+  labels:
+    app.kubernetes.io/component	: server
+    {{- include "rocker.labels" . | nindent 4 }}
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: {{.Values.rocker.storage.workspace}}

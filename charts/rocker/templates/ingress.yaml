@@ -1,21 +1,32 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    spec/ingressClassName: nginx
-  name: r-server
-  namespace: r
+  name: {{ include "rocker.fullname" . }}-server
   labels:
-    app: r-server
+    app.kubernetes.io/component	: server
+    {{- include "rocker.labels" . | nindent 4 }}
 spec:
+  {{- if .Values.ingress.ingressClassName }}
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
+  {{- end -}}
+{{- if .Values.ingress.tls }}
+  tls:
+{{ tpl (toYaml .Values.ingress.tls) $ | indent 4 }}
+{{- end }}
   rules:
-    - host: r.k3s.local
-      http:
+    - http:
         paths:
-          - path: /
-            pathType: ImplementationSpecific
-            backend:
+          - backend:
               service:
-                name: r-server
+                name: {{ include "rocker.fullname" . }}-server
                 port:
-                  number: 8787
+                  number: 80
+            {{- if .Values.ingress.path }}
+            path: {{ .Values.ingress.path }}
+            {{- end }}
+            {{- if .Values.ingress.pathType }}
+            pathType: {{ .Values.ingress.pathType }}
+            {{- end }}
+      {{- if .Values.ingress.host }}
+      host: {{ .Values.ingress.host | quote }}
+      {{- end -}}

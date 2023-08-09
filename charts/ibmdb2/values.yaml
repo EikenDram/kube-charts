@@ -28,7 +28,7 @@ db2:
 # Details of the container image
 image:
   repository: icr.io/db2_community/db2
-  tag: latest
+  tag: "11.5.8.0"
   pullPolicy: IfNotPresent
   # One or more secrets to be used when pulling images
   imagePullSecrets: []

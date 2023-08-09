@@ -1,39 +1,56 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: r-server
-  namespace: r
+  name: {{ include "rocker.fullname" . }}-server
   labels:
-    app: r-server
+    app.kubernetes.io/component	: server
+    {{- include "rocker.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: r-server
+      app.kubernetes.io/component	: server
+      {{- include "rocker.labels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app: r-server
+        app.kubernetes.io/component	: server
+        {{- include "rocker.labels" . | nindent 8 }}
     spec:
+    {{- if .Values.image.imagePullSecrets }}
+      imagePullSecrets:
+      {{- range .Values.image.imagePullSecrets }}
+        - name: {{ . }}
+      {{- end }}
+    {{- end }}
       containers:
-        - name: r-server
-          image: rocker/tidyverse:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-          - containerPort: 8787
-          env:
-          - name: PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: r-server-pass
-                key: pass
-          volumeMounts:
-          - name: cfg-volume
-            mountPath: /home/rstudio/.config/rstudio
-          - name: workspace-volume
-            mountPath: /home/rstudio/workspace
+      - name: r-server
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 8787
+        env:
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "rocker.secretName" $ }}
+              key: pass
+        volumeMounts:
+        - name: cfg-volume
+          mountPath: /home/rstudio/.config/rstudio
+        - name: workspace-volume
+          mountPath: /home/rstudio/workspace
+        {{- with .Values.resources }}
+        resources:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
       volumes:
         - name: cfg-volume
-          emptyDir: pvc-r-server-config
+          emptyDir: {{ include "rocker.fullname" . }}-pvc-config
         - name: workspace-volume
-          emptyDir: pvc-r-server-workspace
+          emptyDir: {{ include "rocker.fullname" . }}-pvc-workspace
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}        
+      

@@ -1,14 +1,15 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: r-server
-  namespace: r
+  name: {{ include "rocker.fullname" . }}-server
   labels:
-    app: r-server
+    app.kubernetes.io/component	: server
+    {{- include "rocker.labels" . | nindent 4 }}
 spec:
   ports:
    - name: http
      protocol: TCP
      port: 8787
   selector:
-    app: r-server
+    app.kubernetes.io/component	: server
+    {{- include "rocker.labels" . | nindent 4 }}
