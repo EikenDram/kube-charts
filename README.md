@@ -3,36 +3,37 @@
 - IBM DB2 community edition
 - R Studio server
 - KubeHome home page for cluster
+- KubeR service for cluster
 
 ## Build chart
 
 ```
-helm package ./charts/ibmdb2/ -d ./packages/
+helm package ./charts/<chart>/ -d ./packages/
 ```
 
 ## Check chart
 
 ```
-helm lint charts/ibmdb2/
+helm lint charts/<chart>/
 
-helm template test ./packages/ibmdb2-0.1.0.tgz --output-dir test
+helm template test ./packages/<chart>-<version>.tgz --output-dir test
 ```
 
 ## Upload chart to gitea
 
 ```
-helm cm-push ibmdb2-0.1.0.tgz gitea
+helm cm-push <chart>-<version>.tgz gitea
 ```
 
 ## Install chart
 
 ```
-helm install db2 gitea/ibmdb2 -n ibmdb2 --create-namespace
+helm install <name> gitea/<chart> -n <namespace> --create-namespace
 ```
 
 ## Uninstall chart
 
 ```
-helm uninstall db2 -n ibmdb2
-k delete ns ibmdb2
+helm uninstall <name> -n <namespace>
+k delete ns <namespace>
 ```
