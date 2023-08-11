@@ -24,13 +24,16 @@ spec:
       {{- end }}
     {{- end }}
       volumes:
-        - name: json-content
-          projected:
-            sources:
-            - configMap:
-              name: {{ include "kubehome.fullname" $ }}-app-config
-            - configMap:
-              name: {{ include "kubehome.fullname" $ }}-cluster-config
+      - name: json-content
+        configMap:
+          name: {{ include "kubehome.fullname" $ }}-config
+          items: 
+          - key: locale.json
+            path: "locale.json"
+          - key: apps.json
+            path: "apps.json"
+          - key: cluster.json
+            path: "cluster.json"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
