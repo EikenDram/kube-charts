@@ -28,6 +28,8 @@ spec:
         configMap:
           name: {{ include "kubehome.fullname" $ }}-config
           items: 
+          - key: logo.json
+            path: "logo.json"
           - key: locale.json
             path: "locale.json"
           - key: apps.json

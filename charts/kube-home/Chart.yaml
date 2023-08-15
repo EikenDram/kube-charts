@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: 0.2.4
+appVersion: 0.2.5
 description: A Helm chart for Kube-Home
 name: kube-home
-version: 0.1.2
+version: 0.1.3
 home: https://github.com/EikenDram/kube-charts
 sources:
 - https://github.com/EikenDram/kube-charts
