@@ -1,9 +1,11 @@
 # Custom helm charts for KubeBuild project
 
-- `ibmdb2` -  IBM DB2 community edition
-- `rocker` - R Studio server
-- `kube-home` - KubeHome home page for cluster
-- `kube-r` - KubeR service for cluster
+| CHART     | DESCRIPTION
+|-----------|----------------------
+| ibmdb2    | [IBM DB2 community edition](https://hub.docker.com/r/ibmcom/db2/)
+| rocker    | R Studio server
+| kube-home | [KubeHome](https://github.com/EikenDram/kube-home) home page for cluster
+| kube-r    | [KubeR](https://github.com/EikenDram/kube-r) service for cluster
 
 ## Helm repository
 
