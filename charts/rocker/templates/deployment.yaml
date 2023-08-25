@@ -46,9 +46,11 @@ spec:
         {{- end }}
       volumes:
         - name: cfg-volume
-          emptyDir: {{ include "rocker.fullname" . }}-pvc-config
+          persistentVolumeClaim:
+            claimName: {{ include "rocker.fullname" . }}-pvc-config
         - name: workspace-volume
-          emptyDir: {{ include "rocker.fullname" . }}-pvc-workspace
+          persistentVolumeClaim:
+            claimName: {{ include "rocker.fullname" . }}-pvc-workspace
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

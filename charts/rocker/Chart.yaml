@@ -3,7 +3,7 @@ appVersion: "4.3.1"
 kubeVersion: ">=1.16.0-0"
 description: A Helm chart for R server
 name: rocker
-version: 0.1.0
+version: 0.1.1
 home: https://github.com/EikenDram/kube-charts
 sources:
 - https://github.com/EikenDram/kube-charts
