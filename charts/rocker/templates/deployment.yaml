@@ -34,7 +34,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{ include "rocker.secretName" $ }}
-              key: pass
+              key: password
         volumeMounts:
         - name: cfg-volume
           mountPath: /home/rstudio/.config/rstudio
