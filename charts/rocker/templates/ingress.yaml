@@ -20,7 +20,7 @@ spec:
               service:
                 name: {{ include "rocker.fullname" . }}-server
                 port:
-                  number: 80
+                  number: 8787
             {{- if .Values.ingress.path }}
             path: {{ .Values.ingress.path }}
             {{- end }}
