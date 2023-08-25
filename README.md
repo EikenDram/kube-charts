@@ -3,7 +3,7 @@
 | CHART     | DESCRIPTION
 |-----------|----------------------
 | ibmdb2    | [IBM DB2 community edition](https://hub.docker.com/r/ibmcom/db2/)
-| rocker    | R Studio server
+| rocker    | [R Studio](https://rocker-project.org/images/versioned/rstudio.html) server
 | kube-home | [KubeHome](https://github.com/EikenDram/kube-home) home page for cluster
 | kube-r    | [KubeR](https://github.com/EikenDram/kube-r) service for cluster
 
@@ -24,7 +24,7 @@ helm install $name eikendram/ibmdb2 --version $version -f $values_yaml --namespa
 
 ## R Studio server
 
-W.I.P
+Custom helm chart for [RStudio](https://rocker-project.org/images/versioned/rstudio.html) server
 
 ```sh
 helm install $name eikendram/rocker --version $version -f $values_yaml --namespace $namespace --create-namespace
