@@ -3,9 +3,9 @@ entries:
   ibmdb2:
   - apiVersion: v2
     appVersion: 11.5.8.0
-    created: "2023-08-25T10:38:31.499520126Z"
+    created: "2023-08-28T10:17:57.159622618Z"
     description: A Helm chart for IBM DB2
-    digest: 5934b259bb939b7004f9b6732c863311d7573d4afe39b61da4e94b264e4f4431
+    digest: d99589dc7446cbcdee0a4a62ead7a3d9ca2af290509a2ea521823f321e23d89a
     home: https://github.com/EikenDram/kube-charts
     maintainers:
     - email: eikendram@gmail.com
@@ -17,6 +17,21 @@ entries:
     - https://EikenDram.github.io/kube-charts/ibmdb2-0.1.1.tgz
     version: 0.1.1
   kube-home:
+  - apiVersion: v2
+    appVersion: 0.2.6
+    created: "2023-08-28T10:17:57.165627879Z"
+    description: A Helm chart for Kube-Home
+    digest: c8ce2ae83dc3d86f6f576361174be5b530a76bb48e7e457200119f6e264b0cb9
+    home: https://github.com/EikenDram/kube-charts
+    maintainers:
+    - email: eikendram@gmail.com
+      name: aiken
+    name: kube-home
+    sources:
+    - https://github.com/EikenDram/kube-charts
+    urls:
+    - https://EikenDram.github.io/kube-charts/kube-home-0.1.4.tgz
+    version: 0.1.4
   - apiVersion: v2
     appVersion: 0.2.5
     created: "2023-08-25T10:38:31.499951031Z"
@@ -65,9 +80,9 @@ entries:
   kube-r:
   - apiVersion: v2
     appVersion: 0.1.1
-    created: "2023-08-25T10:38:31.500335236Z"
+    created: "2023-08-28T10:17:57.165958277Z"
     description: A Helm chart for Kube-R
-    digest: 89877e3e988570884184f187b23d2b5669cc947a69deb3532b78b761b6ec4ef1
+    digest: 983ce1f9755c662c17af37e52e428fd04883b38d99064d47629393b44410c024
     home: https://github.com/EikenDram/kube-charts
     maintainers:
     - email: eikendram@gmail.com
@@ -81,9 +96,9 @@ entries:
   rocker:
   - apiVersion: v2
     appVersion: 4.3.1
-    created: "2023-08-25T10:38:31.50074454Z"
+    created: "2023-08-28T10:17:57.166309875Z"
     description: A Helm chart for R server
-    digest: f2cb2154c7cfd8b87f5ead4104c13a93ae0b8bed23dcfe8720ff776a5af41582
+    digest: 08b806dcbc63dc9fcfc349d0b003e455686234363392d7821d2931b980e7df27
     home: https://github.com/EikenDram/kube-charts
     kubeVersion: '>=1.16.0-0'
     maintainers:
@@ -111,4 +126,4 @@ entries:
     urls:
     - https://EikenDram.github.io/kube-charts/rocker-0.1.0.tgz
     version: 0.1.0
-generated: "2023-08-25T10:38:31.498905319Z"
+generated: "2023-08-28T10:17:57.158391826Z"
