@@ -22,6 +22,19 @@ Custom helm chart for the [IBM DB2 community edition docker image](https://hub.d
 helm install $name eikendram/ibmdb2 --version $version -f $values_yaml --namespace $namespace --create-namespace
 ```
 
+Configuration [values.yaml](charts/ibmdb2/values.yaml):
+
+| VALUE      | DESCRIPTION
+|------------|--------------------
+| **db2**    |
+| instance   | IBM DB2 instance/admin name
+| password   | IBM DB2 instance/admin password
+| port       | exposed NodePort for IBM DB2
+| storage    | storage size
+| **repodb** |
+| enable     | create dmc repository database
+| dbname     | name of dmc repository database
+
 ## R Studio server
 
 Custom helm chart for [RStudio](https://rocker-project.org/images/versioned/rstudio.html) server
@@ -30,6 +43,16 @@ Custom helm chart for [RStudio](https://rocker-project.org/images/versioned/rstu
 helm install $name eikendram/rocker --version $version -f $values_yaml --namespace $namespace --create-namespace
 ```
 
+Configuration [values.yaml](charts/rocker/values.yaml):
+
+| VALUE       | DESCRIPTION
+|-------------|--------------------
+| **rocker**  |
+| password    | password for accessing server (username is `rstudio`)
+| **storage** |
+| config      | storage size for configuration files
+| workspace   | storage size for workspace
+
 ## KubeHome
 
 Helm chart for [KubeHome](https://github.com/EikenDram/kube-home)
@@ -37,6 +60,18 @@ Helm chart for [KubeHome](https://github.com/EikenDram/kube-home)
 ```sh
 helm install $name eikendram/kube-home --version $version -f $values_yaml --namespace $namespace --create-namespace
 ```
+
+Configuration [values.yaml](charts/kube-home/values.yaml):
+
+| VALUE      | DESCRIPTION
+|------------|--------------------
+| **config** |
+| favicon    | name of `ConfigMap` with `favicon.ico` containing application icon
+| img        | name of `ConfigMap` containing `img` directory
+| logo       | json data with logo configuration
+| locale     | json data with localization configuration
+| apps       | json array containing applications configuration
+| cluster    | json data with cluster configuration
 
 ## KubeR
 
@@ -51,3 +86,8 @@ helm install $name eikendram/kube-r --version $version -f $values_yaml --namespa
 ```sh
 sh build.sh
 ```
+
+Configuration [values.yaml](charts/kube-r/values.yaml):
+
+| VALUE      | DESCRIPTION
+|------------|--------------------
