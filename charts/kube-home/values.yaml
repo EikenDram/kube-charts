@@ -10,6 +10,12 @@ fullnameOverride: null
 
 # KubeHome configuration
 config:
+  # configMap with custom favicon.ico app icon
+  favicon: null
+
+  # configMap with custom images
+  img: null
+
   # logo configuration
   logo: |
     {
@@ -82,7 +88,7 @@ config:
 # Details of the container image
 image:
   repository: ghcr.io/eikendram/kube-home
-  tag: v0.2.5
+  tag: v0.2.6
   pullPolicy: IfNotPresent
   # One or more secrets to be used when pulling images
   imagePullSecrets: []

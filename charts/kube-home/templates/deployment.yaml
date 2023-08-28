@@ -36,6 +36,16 @@ spec:
             path: "apps.json"
           - key: cluster.json
             path: "cluster.json"
+      {{- if .Values.config.favicon}}
+      - name: cm-favicon
+        configMap:
+          name: {{.Values.config.favicon}}
+      {{- end}}
+      {{- if .Values.config.img}}
+      - name: cm-img
+        configMap:
+          name: {{.Values.config.img}}
+      {{- end}}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -47,6 +57,15 @@ spec:
         volumeMounts:
           - mountPath: /usr/share/nginx/html/content
             name: json-content
+          {{- if .Values.config.favicon }}
+          - mountPath: /usr/share/nginx/html/favicon.ico
+            name: cm-favicon
+            subPath: favicon.ico
+          {{- end}}
+          {{- if .Values.config.img }}
+          - mountPath: /usr/share/nginx/html/img
+            name: cm-img
+          {{- end}}
         ports:
         - containerPort: 80
         {{- with .Values.resources }}
