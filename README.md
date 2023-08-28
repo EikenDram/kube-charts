@@ -1,11 +1,11 @@
 # Custom helm charts for KubeBuild project
 
-| CHART     | DESCRIPTION
-|-----------|----------------------
-| ibmdb2    | [IBM DB2 community edition](https://hub.docker.com/r/ibmcom/db2/)
-| rocker    | [R Studio](https://rocker-project.org/images/versioned/rstudio.html) server
-| kube-home | [KubeHome](https://github.com/EikenDram/kube-home) home page for cluster
-| kube-r    | [KubeR](https://github.com/EikenDram/kube-r) service for cluster
+| CHART     | VERSION | APP VERSION | DESCRIPTION
+|-----------|---------|-------------|---------------------
+| ibmdb2    | 0.1.1   | 11.5.8.0    | [IBM DB2 community edition](https://hub.docker.com/r/ibmcom/db2/)
+| rocker    | 0.1.1   | 4.3.1       | [R Studio](https://rocker-project.org/images/versioned/rstudio.html) server
+| kube-home | 0.1.4   | 0.2.6       | [KubeHome](https://github.com/EikenDram/kube-home) home page for cluster
+| kube-r    | W.I.P.  | W.I.P.      | [KubeR](https://github.com/EikenDram/kube-r) service for cluster
 
 ## Helm repository
 
