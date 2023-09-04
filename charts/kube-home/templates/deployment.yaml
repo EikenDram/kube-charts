@@ -27,15 +27,15 @@ spec:
       - name: json-config
         configMap:
           name: {{ include "kubehome.fullname" $ }}-config
-      {{- if .Values.config.favicon}}
+      {{- if index .Values "kube-home" "favicon"}}
       - name: cm-favicon
         configMap:
-          name: {{.Values.config.favicon}}
+          name: {{index .Values "kube-home" "favicon"}}
       {{- end}}
-      {{- if .Values.config.img}}
+      {{- if index .Values "kube-home" "img"}}
       - name: cm-img
         configMap:
-          name: {{.Values.config.img}}
+          name: {{index .Values "kube-home" "img"}}
       {{- end}}
       {{- with .Values.nodeSelector }}
       nodeSelector:
@@ -52,12 +52,12 @@ spec:
           - mountPath: /usr/share/nginx/html/config.json
             name: json-config
             subPath: config.json
-          {{- if .Values.config.favicon }}
+          {{- if index .Values "kube-home" "favicon" }}
           - mountPath: /usr/share/nginx/html/favicon.ico
             name: cm-favicon
             subPath: favicon.ico
           {{- end}}
-          {{- if .Values.config.img }}
+          {{- if index .Values "kube-home" "img" }}
           - mountPath: /usr/share/nginx/html/img
             name: cm-img
           {{- end}}
