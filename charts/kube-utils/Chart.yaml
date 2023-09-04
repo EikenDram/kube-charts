@@ -1,7 +1,7 @@
 apiVersion: v2
 appVersion: 0.1.1
-description: A Helm chart for Kube-R
-name: kube-r
+description: A Helm chart for Kube-Utils
+name: kube-utils
 version: 0.1.1
 home: https://github.com/EikenDram/kube-charts
 sources:
