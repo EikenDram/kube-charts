@@ -68,10 +68,8 @@ Configuration [values.yaml](charts/kube-home/values.yaml):
 | **config** |
 | favicon    | name of `ConfigMap` with `favicon.ico` containing application icon
 | img        | name of `ConfigMap` containing `img` directory
-| logo       | json data with logo configuration
-| locale     | json data with localization configuration
-| apps       | json array containing applications configuration
-| cluster    | json data with cluster configuration
+| config     | json data with KubeHome configuration
+| locale     | locale value
 
 ## KubeR
 

@@ -6,11 +6,5 @@ metadata:
     app.kubernetes.io/component	: homepage
     {{- include "kubehome.labels" . | nindent 4 }}
 data:
-  logo.json: |
-{{ .Values.config.logo | indent 4 }}
-  locale.json: |
-{{ .Values.config.locale | indent 4 }}
-  apps.json: |
-{{ .Values.config.apps | indent 4 }}
-  cluster.json: |
-{{ .Values.config.cluster | indent 4 }}
+  config.json: |
+{{ index .Values "kube-home" "config" | indent 4 }}

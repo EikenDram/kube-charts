@@ -9,86 +9,77 @@ nameOverride: null
 fullnameOverride: null
 
 # KubeHome configuration
-config:
+kube-home:
   # configMap with custom favicon.ico app icon
   favicon: null
 
   # configMap with custom images
   img: null
 
-  # logo configuration
-  logo: |
-    {
-      "url": "",
-      "height": ""
-    }
+  # locale
+  locale: en
 
-  # localization configuration
-  locale: |
+  # configuration
+  config: |
     {
-      "app": "Kubernetes cluster",
-      "utils": "Tools"
-      "open": "Open",
-      "docs": "Documentation",
-      "services": "Services",
-      "contacts": "Contacts",
-      "system": "System",
-      "specs": "Specifications"
-    }
-
-  # applications configuration
-  apps: |
-    [
-      {
-        "name": "",
-        "desc": "",
-        "url": "",
-        "docs": ""
+      "apps": [
+        {
+          "name": "Application 1",
+          "desc": "Description",
+          "url": "app1.k3s.local",
+          "docs": "app1.k3s.local/docs"
+        }
+      ],
+      "cluster": {
+        "name": "K3S.LOCAL",
+        "contacts": [
+            {
+              "title": "Administrator",
+              "name": "Aiken Drum",
+              "phone": "77-77",
+              "mail": "eikendram@gmail.com",
+              "avatar": {
+                  "image": "img/jeb.jpeg"
+              }
+            }
+          ],
+          "specs": [
+            {
+              "name": "IP",
+              "value": "192.168.120.15"
+            }
+          ],
+          "services": [
+            {
+              "name": "Keycloak",
+              "desc": "Access management",
+              "url": "http://keycloak.k3s.local/",
+              "icon": "fa-solid fa-user-gear"
+            }
+          ],
+          "utils": [
+            {
+              "name": "keycloak",
+              "desc": "Manage Keycloak users",
+              "url": "http://git.k3s.local/kube-utils/keycloak/",
+              "icon": "fa-solid fa-terminal"
+            }
+          ],
+          "system": [
+            {
+              "name": "Dashboard",
+              "desc": "Kubernetes dashboard",
+              "url": "http://dashboard.k3s.local/",
+              "icon": "fa-solid fa-chalkboard"
+            }
+          ]
       }
-    ]
-
-  # cluster configuration
-  cluster: |
-    {
-      "name": "",
-      "contacts": [
-        {
-          "title": "",
-          "name": "",
-          "phone": "",
-          "mail": ""
-        }
-      ],
-      "specs": [
-        { "name": "", "value": "" },
-      ],
-      "utils": [
-        { 
-          "name": "",
-          "desc": "", 
-          "url": "" 
-        }
-      ],
-      "services": [
-        {
-          "name": "",
-          "desc": "",
-          "url": ""
-        }
-      ],
-      "system": [
-        {
-          "name": "",
-          "desc": "",
-          "url": ""
-        }
-      ]
     }
 
 # Details of the container image
 image:
   repository: ghcr.io/eikendram/kube-home
-  tag: v0.2.6
+  tag: v0.3.0
   pullPolicy: IfNotPresent
   # One or more secrets to be used when pulling images
   imagePullSecrets: []

@@ -24,18 +24,9 @@ spec:
       {{- end }}
     {{- end }}
       volumes:
-      - name: json-content
+      - name: json-config
         configMap:
           name: {{ include "kubehome.fullname" $ }}-config
-          items: 
-          - key: logo.json
-            path: "logo.json"
-          - key: locale.json
-            path: "locale.json"
-          - key: apps.json
-            path: "apps.json"
-          - key: cluster.json
-            path: "cluster.json"
       {{- if .Values.config.favicon}}
       - name: cm-favicon
         configMap:
@@ -54,9 +45,13 @@ spec:
       - name: kube-home
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        - name: VITE_LOCALE
+          value: {{ index .Values "kube-home" "locale" }}
         volumeMounts:
-          - mountPath: /usr/share/nginx/html/content
-            name: json-content
+          - mountPath: /usr/share/nginx/html/config.json
+            name: json-config
+            subPath: config.json
           {{- if .Values.config.favicon }}
           - mountPath: /usr/share/nginx/html/favicon.ico
             name: cm-favicon
