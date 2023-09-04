@@ -1,11 +1,12 @@
 # Custom helm charts for KubeBuild project
 
-| CHART     | VERSION | APP VERSION | DESCRIPTION
-|-----------|---------|-------------|---------------------
-| ibmdb2    | 0.1.1   | 11.5.8.0    | [IBM DB2 community edition](https://hub.docker.com/r/ibmcom/db2/)
-| rocker    | 0.1.1   | 4.3.1       | [R Studio](https://rocker-project.org/images/versioned/rstudio.html) server
-| kube-home | 0.1.4   | 0.2.6       | [KubeHome](https://github.com/EikenDram/kube-home) home page for cluster
-| kube-r    | W.I.P.  | W.I.P.      | [KubeR](https://github.com/EikenDram/kube-r) service for cluster
+| CHART      | VERSION | APP VERSION | DESCRIPTION
+|------------|---------|-------------|---------------------
+| ibmdb2     | 0.1.1   | 11.5.8.0    | [IBM DB2 community edition](https://hub.docker.com/r/ibmcom/db2/)
+| rocker     | 0.1.1   | 4.3.1       | [R Studio](https://rocker-project.org/images/versioned/rstudio.html) server
+| kube-home  | 0.2.0   | 0.3.0       | [KubeHome](https://github.com/EikenDram/kube-home) home page for cluster
+| kube-r     | W.I.P.  | W.I.P.      | [KubeR](https://github.com/EikenDram/kube-r) service for cluster
+| kube-utils | W.I.P.  | W.I.P.      | [KubeUtils](https://github.com/EikenDram/kube-utils) wep app for cluster
 
 ## Helm repository
 
@@ -63,13 +64,13 @@ helm install $name eikendram/kube-home --version $version -f $values_yaml --name
 
 Configuration [values.yaml](charts/kube-home/values.yaml):
 
-| VALUE      | DESCRIPTION
-|------------|--------------------
-| **config** |
-| favicon    | name of `ConfigMap` with `favicon.ico` containing application icon
-| img        | name of `ConfigMap` containing `img` directory
-| config     | json data with KubeHome configuration
-| locale     | locale value
+| VALUE         | DESCRIPTION
+|---------------|--------------------
+| **kube-home** |
+| favicon       | name of `ConfigMap` with `favicon.ico` containing application icon
+| img           | name of `ConfigMap` containing `img` directory
+| config        | json data with KubeHome configuration
+| locale        | locale value
 
 ## KubeR
 
@@ -79,13 +80,28 @@ Helm chart for [KubeR](https://github.com/EikenDram/kube-r)
 helm install $name eikendram/kube-r --version $version -f $values_yaml --namespace $namespace --create-namespace
 ```
 
+Configuration [values.yaml](charts/kube-r/values.yaml):
+
+| VALUE      | DESCRIPTION
+|------------|--------------------
+
+## KubeUtils
+
+Helm chart for [KubeUtils](https://github.com/EikenDram/kube-utils)
+
+```sh
+helm install $name eikendram/kube-utils --version $version -f $values_yaml --namespace $namespace --create-namespace
+```
+
+Configuration [values.yaml](charts/kube-utils/values.yaml):
+
+| VALUE      | DESCRIPTION
+|------------|--------------------
+
 ## Build charts for testing
 
 ```sh
 sh build.sh
 ```
 
-Configuration [values.yaml](charts/kube-r/values.yaml):
 
-| VALUE      | DESCRIPTION
-|------------|--------------------

@@ -8,12 +8,12 @@ nameOverride: null
 # Full name override
 fullnameOverride: null
 
-# KubeR configuration
+# KubeUtils configuration
 config:
 
 # Details of the container image
 image:
-  repository: ghcr.io/eikendram/kube-r
+  repository: ghcr.io/eikendram/kube-utils
   tag: v0.1.1
   pullPolicy: IfNotPresent
   # One or more secrets to be used when pulling images

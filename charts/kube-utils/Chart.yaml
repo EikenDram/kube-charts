@@ -1,0 +1,11 @@
+apiVersion: v2
+appVersion: 0.1.1
+description: A Helm chart for Kube-R
+name: kube-r
+version: 0.1.1
+home: https://github.com/EikenDram/kube-charts
+sources:
+- https://github.com/EikenDram/kube-charts
+maintainers:
+  - name: aiken
+    email: eikendram@gmail.com

@@ -2,6 +2,7 @@ helm lint charts/ibmdb2/
 helm lint charts/kube-home/
 helm lint charts/kube-r/
 helm lint charts/rocker/
+helm lint charts/kube-utils/
 
 rm packages/*
 
@@ -9,6 +10,7 @@ helm package charts/ibmdb2 -d ./packages/
 helm package charts/rocker -d ./packages/
 helm package charts/kube-home -d ./packages/
 helm package charts/kube-r -d ./packages/
+helm package charts/kube-utils -d ./packages/
 
 rm -rf ./test/*
 
