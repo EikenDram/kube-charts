@@ -45,9 +45,6 @@ spec:
       - name: kube-home
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        env:
-        - name: VITE_LOCALE
-          value: {{ index .Values "kube-home" "locale" }}
         volumeMounts:
           - mountPath: /usr/share/nginx/html/config.json
             name: json-config

@@ -16,9 +16,6 @@ kube-home:
   # configMap with custom images
   img: null
 
-  # locale
-  locale: en
-
   # configuration
   config: |
     {
