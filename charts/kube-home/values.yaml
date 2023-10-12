@@ -77,7 +77,7 @@ kube-home:
 # Details of the container image
 image:
   repository: ghcr.io/eikendram/kube-home
-  tag: v0.3.2
+  tag: v0.3.3
   pullPolicy: IfNotPresent
   # One or more secrets to be used when pulling images
   imagePullSecrets: []
