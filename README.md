@@ -1,4 +1,4 @@
-# Custom helm charts for KubeBuild project
+# Custom helm charts for KubeBuild project 
 
 | CHART      | VERSION | APP VERSION | DESCRIPTION
 |------------|---------|-------------|---------------------
