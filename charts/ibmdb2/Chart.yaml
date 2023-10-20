@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: 11.5.8.0
 description: A Helm chart for IBM DB2
 name: ibmdb2
-version: 0.1.1
+version: 0.1.2
 home: https://github.com/EikenDram/kube-charts
 sources:
 - https://github.com/EikenDram/kube-charts

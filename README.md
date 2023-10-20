@@ -2,7 +2,7 @@
 
 | CHART      | VERSION | APP VERSION | DESCRIPTION
 |------------|---------|-------------|---------------------
-| ibmdb2     | 0.1.1   | 11.5.8.0    | [IBM DB2 community edition](https://hub.docker.com/r/ibmcom/db2/)
+| ibmdb2     | 0.1.2   | 11.5.8.0    | [IBM DB2 community edition](https://hub.docker.com/r/ibmcom/db2/)
 | rocker     | 0.1.1   | 4.3.1       | [R Studio](https://rocker-project.org/images/versioned/rstudio.html) server
 | kube-home  | 0.2.4   | 0.3.3       | [KubeHome](https://github.com/EikenDram/kube-home) home page for cluster
 | kube-r     | W.I.P.  | W.I.P.      | [KubeR](https://github.com/EikenDram/kube-r) service for cluster
@@ -35,6 +35,11 @@ Configuration [values.yaml](charts/ibmdb2/values.yaml):
 | **repodb** |
 | enable     | create dmc repository database
 | dbname     | name of dmc repository database
+| **exchange** | 
+| enable       | add shared nfs volume to db2 server
+| nfs          | nfs server
+| path         | path on nfs server
+| mount        | path on db2 server
 
 ## R Studio server
 

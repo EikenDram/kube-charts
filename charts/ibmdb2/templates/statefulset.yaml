@@ -46,6 +46,12 @@ spec:
           chmod a+x /var/custom/repodb.sh
         {{- end }}
       volumes:
+      {{- if .Values.exchange.enable }}
+      - name: nfs-volume
+          nfs: 
+            server: {{ .Values.exchange.nfs }}
+            path: {{ .Values.exchange.path }}
+      {{- end }}
       - name: ibmdb2-data
         persistentVolumeClaim:
           claimName: ibmdb2-data
@@ -73,6 +79,10 @@ spec:
         {{- if .Values.db2.repodb.enable }}
         - name: ibmdb2-repodb-rw
           mountPath: "/var/custom"
+        {{- end }}
+        {{- if .Values.exchange.enable }}
+        - name: nfs-volume
+          mountPath: {{ .Values.exchange.mount }}
         {{- end }}
         securityContext:
           privileged: true

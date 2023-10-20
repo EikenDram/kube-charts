@@ -25,6 +25,17 @@ db2:
     # name of repository database
     dbname: repodb
 
+# Add exchange NFS
+exchange:
+  # Enable NFS exchange
+  enable: false
+  # NFS server
+  nfs: nfs-server.default
+  # NFS path
+  path: /exchange/
+  # Mount path
+  mount: /exchange/
+
 # Details of the container image
 image:
   repository: icr.io/db2_community/db2
