@@ -45,12 +45,15 @@ spec:
           cp /tmp/custom/repodb.sh /var/custom/repodb.sh;
           chmod a+x /var/custom/repodb.sh
         {{- end }}
+        {{- if .Values.exchange.enable }}
+           chmod 777 /{{.Values.exchange.path}}
+        {{- end }}
       volumes:
       {{- if .Values.exchange.enable }}
       - name: nfs-volume
           nfs: 
             server: {{ .Values.exchange.nfs }}
-            path: {{ .Values.exchange.path }}
+            path: {{ .Values.exchange.mount }}
       {{- end }}
       - name: ibmdb2-data
         persistentVolumeClaim:
